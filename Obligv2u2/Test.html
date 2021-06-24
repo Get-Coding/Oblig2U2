@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.16.0.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.16.0.js"></script>
+  <script src="./controller.js"></script>
+</body>
+
+<script>
+
+        let numbers =  [5, 3, 9, 4, 2];
+        let inputValue;
+        let errormsg = "";
+        let chosenBar = "";
+        
+        function show() {
+        }
+        QUnit.test("Velge en stople",
+            function (assert) {
+               numbers = [5, 3, 9, 4, 2];
+               chosenBar = 2;
+                selectedBar(4);
+                let actual = chosenBar;
+                let expected = 4;
+                assert.equal(actual, expected)}
+        );
+        QUnit.test("Velge den som er valgt og en annen",
+            function (assert) {
+               numbers = [5, 3, 9, 4, 2];
+               chosenBar = 3;
+                selectedBar(4);
+                let actual = chosenBar;
+                let expected = 4;
+                assert.equal(actual, expected)}
+        );
+
+        QUnit.test("Slette en stolpe",
+            function (assert) {
+               numbers = [7, 3, 9, 4, 1];
+                selectedBar(3);
+                removeBar()
+                let actual = numbers;
+                let expected = [7, 3, 4, 1];
+                assert.deepEqual(actual, expected)}
+        );
+
+        QUnit.test("Endre en stolpe",
+            function (assert) {
+               numbers = [5, 4, 1, 7, 2];
+                chosenBar = 2;
+                inputValue = 8;
+                changeBar();
+                let actual = numbers;
+                let expected = [5, 8, 1, 7, 2];
+                assert.deepEqual(actual, expected)}
+        );
+
+        QUnit.test("Legge til en stolpe",
+            function (assert) {
+                numbers = [5, 4, 1, 7, 2];
+                inputValue = 9;
+                addBar();
+                let actual = numbers;
+                let expected = [5, 4, 1, 7, 2, 9];
+                assert.deepEqual(actual, expected)}
+        );
+</script>
